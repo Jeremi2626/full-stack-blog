@@ -17,6 +17,13 @@ app.use(clerkMiddleware ()); // Middleware de Clerk para autenticar las peticion
 app.use("/webhooks", webhookRouter); // Ruta para el webhook de Clerk
 app.use(express.json()); // Middleware para parsear el cuerpo de las peticiones JSON
 
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", 
+    "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 /*app.get('/test', (req, res) => {
   res.status(200).send('Hello World!'); 
 } ) */

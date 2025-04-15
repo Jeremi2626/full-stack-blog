@@ -1,5 +1,8 @@
+import ImageKit from 'imagekit';
 import Post from '../models/post.model.js';
-import User from '../models/user.model.js';
+import User from '../models/user.model.js'; 
+import dotenv from 'dotenv';
+dotenv.config(); // Cargar las variables de entorno desde el archivo .env
 
 
 export const getPosts = async (req, res) => {
@@ -65,3 +68,15 @@ export const deletePost = async (req, res) => {
 
   res.status(200).json("Post has been deleted");
 };
+
+const imagekit = new ImageKit({
+  urlEndpoint: "https://ik.imagekit.io/qvx1ypdhp/",
+  publicKey: "public_Xg9hmGFAWPYUn1jEiz8NFiIVx34=",
+  privateKey: "private_UwGRiB6EOw9wE+IyCJBkx+CUaFU=",
+
+})
+
+export const uploadAuth = async (req, res) => {
+  const result = imagekit.getAuthenticationParameters();
+  res.send(result);
+}

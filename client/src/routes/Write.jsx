@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import Upload from "../components/Upload";
 
+
 const Write = () => {
   const {isLoaded, isSignedIn} = useUser()
   const [value, setValue] = useState('');
@@ -61,7 +62,7 @@ const Write = () => {
     const formData = new FormData(e.target);
     
     const data = {
-      //img: cover.Path || "",
+      img: cover.filePath || "",
       title: formData.get('title'),
       category: formData.get('category'),
       desc: formData.get('desc'),
